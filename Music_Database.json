@@ -1,0 +1,14 @@
+    {
+    "artists": [
+        {"ID": "1", "Name": "Artist1", "Genre": "Rock", "Country": "USA"},
+        {"ID": "2", "Name": "Artist2", "Genre": "Pop", "Country": "UK"}
+    ],
+    "albums": [
+        {"ID": "1", "Title": "Album1", "ReleaseYear": "2000", "ArtistID": "1"},
+        {"ID": "2", "Title": "Album2", "ReleaseYear": "2010", "ArtistID": "2"}
+    ],
+    "tracks": [
+        {"ID": "1", "Title": "Track1", "Duration": "180", "AlbumID": "1"},
+        {"ID": "2", "Title": "Track2", "Duration": "240", "AlbumID": "2"}
+    ]
+}
