@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">🎵 Music Collection</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="text-center mb-5">Welcome to the Music Collection</h1>
+
+        <!-- Блок с артистами -->
+        <div class="mb-5">
+            <h2 class="text-primary">🎤 Artists</h2>
+            <a href="{% url 'add_artist' %}" class="btn btn-success mb-3">Add Artist</a>
+            <ul class="list-group">
+                {% for artist in artists %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ artist.name }}</span>
+                        <span class="badge bg-primary">{{ artist.genre }}</span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-muted">No artists available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Блок с альбомами -->
+        <div class="mb-5">
+            <h2 class="text-danger">💿 Albums</h2>
+            <a href="{% url 'add_album' %}" class="btn btn-success mb-3">Add Album</a>
+            <ul class="list-group">
+                {% for album in albums %}
+                    <li class="list-group-item">
+                        <strong>{{ album.title }}</strong> 
+                        <span class="text-muted">by {{ album.artist.name }}</span> 
+                        <span class="badge bg-secondary">{{ album.release_date }}</span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-muted">No albums available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Блок с треками -->
+        <div class="mb-5">
+            <h2 class="text-success">🎧 Tracks</h2>
+            <a href="{% url 'add_track' %}" class="btn btn-success mb-3">Add Track</a>
+            <ul class="list-group">
+                {% for track in tracks %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ track.title }}</strong>
+                            <small class="text-muted">({{ track.album.title }})</small>
+                        </div>
+                        <span class="badge bg-success">{{ track.duration }}</span>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item text-muted">No tracks available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
